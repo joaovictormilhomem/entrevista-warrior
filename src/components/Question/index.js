@@ -1,5 +1,9 @@
+import { Fragment } from 'react';
+import {Box, Container, Typography, Button } from '@material-ui/core';
+import Answers from '../Answers';
+import './style.css'
 
-function Question({ questionProps }) {
+export default function Question({ questionProps }) {
   let questionTitle = questionProps.question;
   let incorrectAnswers = questionProps.incorrect_answers;
   let correctAnswer = questionProps.correct_answer;
@@ -7,13 +11,17 @@ function Question({ questionProps }) {
   let answers = [correctAnswer, ...incorrectAnswers].sort();
 
   return (
-    <div className='question_container'>
-      <h1 className='question_title' dangerouslySetInnerHTML={{ __html: questionTitle }} />
-      <ul className='question_answers'>
-        {answers.map((answer, index) => <li key={index} className='question_answer' dangerouslySetInnerHTML={{ __html: answer }}/>)}
-      </ul>
-    </div>
+    <Fragment>
+
+      <Container maxWidth="sm">
+        <Box className='question-box'>
+          <Typography variant="h3" component="div" dangerouslySetInnerHTML={{ __html: questionTitle }} gutterBottom />
+          <Answers answers={answers} />
+          <Button variant="contained" color="success">Confirmar</Button>
+        </Box>
+      </Container>
+
+
+    </Fragment>
   );
 }
-
-export default Question;

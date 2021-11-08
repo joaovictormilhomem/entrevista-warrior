@@ -1,4 +1,7 @@
-p{
-  text-align: center;
-  font-size: 2rem;
+body{
+  background-color: #58B19F !important;
+}
+::selection{
+  color: #000 !important;
+  background-color: #F8EFBA !important;
 }

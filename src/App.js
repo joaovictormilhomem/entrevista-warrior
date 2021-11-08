@@ -1,25 +1,26 @@
-import { useEffect, useState } from 'react';
-import './App.css';
-import Question from './components/Question';
-import api from './services/api'
+import { useState } from "react";
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import Questions from "./pages/Questions";
+import SelectAmount from "./pages/SelectAmount";
+import './App.css'
 
 function App() {
-
-  const [questions, setQuestions] = useState();
-
-  useEffect(() => {
-    api
-      .get("/api.php?amount=1")
-      .then((response) => setQuestions(response.data.results))
-      .catch((err) => {
-        console.error("ops! ocorreu um erro" + err);
-      });
-  }, []);
+  const [amount, setAmount] = useState(true);
 
   return (
-    <div className="App">
-      {questions ? questions.map((questionProps,index) => <Question key={index} questionProps={questionProps} />) : <p>Loading...</p>}
-    </div>
+    <Router>
+      <Switch>
+
+        <Route exact path="/" >
+          <SelectAmount setAmount={setAmount}/>
+        </Route>
+
+        <Route exact path="/questions">
+          {amount ? <Questions amount={amount} /> : <Redirect to="/" />}
+        </Route>
+
+      </Switch>
+    </Router>
   );
 }
 
