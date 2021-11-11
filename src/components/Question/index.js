@@ -18,29 +18,32 @@ export default function Question({ questionProps, responses, setResponses }) {
   return (
     <Fragment>
 
-      <Container maxWidth="sm">
+      <Container className="question-container" maxWidth="sm">
         <Box className='question-box'>
-          <Typography variant="h3" component="div" dangerouslySetInnerHTML={{ __html: questionTitle }} gutterBottom />
+          <Typography className="question-title" variant="h3" component="div" dangerouslySetInnerHTML={{ __html: questionTitle }} gutterBottom />
           <RadioGroup
             aria-label="gender"
             defaultValue="female"
             name="radio-buttons-group"
           >
-            {answers.map((answer, index) => (
-              <FormControlLabel
-                key={index}
-                value={answer}
-                control={<Radio />}
-                onChange={(event) => {setSelectedAnswer(event.target.value)}}
-                label={
-                  <Typography
-                    variant="body1"
-                    gutterBottom
-                    dangerouslySetInnerHTML={{ __html: answer }}
-                  />
-                }
-              />
-            ))}
+            <div className="answers">
+              {answers.map((answer, index) => (
+                <FormControlLabel
+                  className="answer"
+                  key={index}
+                  value={answer}
+                  control={<Radio />}
+                  onChange={(event) => { setSelectedAnswer(event.target.value) }}
+                  label={
+                    <Typography
+                      variant="body1"
+                      gutterBottom
+                      dangerouslySetInnerHTML={{ __html: answer }}
+                    />
+                  }
+                />
+              ))}
+            </div>
           </RadioGroup>
           <Button onClick={handleConfirmAnswerQuestionClick} variant="contained" color="success">Confirm</Button>
         </Box>
