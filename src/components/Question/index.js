@@ -12,7 +12,10 @@ export default function Question({ questionProps, responses, setResponses }) {
   const [selectedAnswer, setSelectedAnswer] = useState();
 
   function handleConfirmAnswerQuestionClick() {
-    setResponses([...responses, selectedAnswer]);
+    if(selectedAnswer){
+      setResponses([...responses, selectedAnswer]);
+      setSelectedAnswer(undefined);
+    }
   }
 
   return (
