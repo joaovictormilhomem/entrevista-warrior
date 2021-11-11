@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 import { Box, Container, Typography, Button, FormControlLabel, RadioGroup, Radio } from '@material-ui/core';
 import './style.css'
 
@@ -16,15 +16,14 @@ export default function Question({ questionProps, responses, setResponses }) {
   }
 
   return (
-    <Fragment>
-
       <Container className="question-container" maxWidth="sm">
         <Box className='question-box'>
           <Typography className="question-title" variant="h3" component="div" dangerouslySetInnerHTML={{ __html: questionTitle }} gutterBottom />
           <RadioGroup
-            aria-label="gender"
-            defaultValue="female"
+            aria-label="answer"
             name="radio-buttons-group"
+            value={selectedAnswer}
+            onChange={(event) => { setSelectedAnswer(event.target.value) }}
           >
             <div className="answers">
               {answers.map((answer, index) => (
@@ -33,7 +32,6 @@ export default function Question({ questionProps, responses, setResponses }) {
                   key={index}
                   value={answer}
                   control={<Radio />}
-                  onChange={(event) => { setSelectedAnswer(event.target.value) }}
                   label={
                     <Typography
                       variant="body1"
@@ -48,8 +46,5 @@ export default function Question({ questionProps, responses, setResponses }) {
           <Button onClick={handleConfirmAnswerQuestionClick} variant="contained" color="success">Confirm</Button>
         </Box>
       </Container>
-
-
-    </Fragment>
   );
 }
