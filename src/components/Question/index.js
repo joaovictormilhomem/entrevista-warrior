@@ -22,7 +22,6 @@ export default function Question({ questionProps, responses, setResponses }) {
           <RadioGroup
             aria-label="answer"
             name="radio-buttons-group"
-            value={selectedAnswer}
             onChange={(event) => { setSelectedAnswer(event.target.value) }}
           >
             <div className="answers">

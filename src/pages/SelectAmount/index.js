@@ -2,9 +2,6 @@ import { useEffect, useState } from "react";
 import { useHistory } from 'react-router';
 import { Link } from "react-router-dom";
 import { Button, Container, FormControl, TextField, Typography } from "@material-ui/core";
-/* import CheckIcon from '@mui/icons-material/Check';
-import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
-import CancelIcon from '@mui/icons-material/Cancel'; */
 import "./style.css"
 
 export default function SelectAmount({ setAmount }) {
@@ -51,8 +48,8 @@ export default function SelectAmount({ setAmount }) {
         <div className="select-amount-content">
           <Typography mt={5} variant="h2" >Let's go?</Typography>
           <div className="start-cancel-buttons">
-            <Button onClick={handleStartClick} variant="contained" /* endIcon={<PlayCircleFilledWhiteIcon />} */>Start</Button>
-            <Button onClick={handleCancelClick} variant="contained" /* endIcon={<CancelIcon />} */>Cancel</Button>
+            <Button onClick={handleStartClick} variant="contained">Start</Button>
+            <Button onClick={handleCancelClick} variant="contained">Cancel</Button>
           </div>
         </div>
         :
@@ -74,7 +71,7 @@ export default function SelectAmount({ setAmount }) {
                 error={!amountIsValidated}
                 helperText='must be between 1 and 50'
               />
-              <Button onClick={handleSelectAmountClick} variant="contained" /* endIcon={<CheckIcon />} */>select</Button>
+              <Button onClick={handleSelectAmountClick} variant="contained">Select</Button>
             </div>
           </FormControl>
           {thereIsLastPlayReport && <div className='check-report'>To see the report of the last time you played <Link to='/report'>click here</Link></div>}

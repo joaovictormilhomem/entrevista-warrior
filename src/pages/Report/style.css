@@ -1,0 +1,40 @@
+.report-title{
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.report-question-box{
+  background-color: #fff;
+  max-width: 95vw;
+  height: fit-content;
+  padding: 20px 20px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  margin: 15px 0;
+}
+
+.report-answers{
+  font-size: 1.5rem;
+}
+
+.wrong-answer{
+  color: rgb(144, 50, 50);
+}
+
+.correct-answer{
+  color: rgb(65, 134, 65);
+}
+
+.user-answer{
+  color: rgb(60, 60, 155);
+}
+
+.back-button{
+  position: fixed !important;
+  bottom: 10px;
+  right: 10px;
+  height: 64px;
+  font-size: 1.4rem !important;
+  border-radius: 50% !important;
+}
