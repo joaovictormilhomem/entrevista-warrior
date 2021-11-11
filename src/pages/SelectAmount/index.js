@@ -9,7 +9,7 @@ import "./style.css"
 
 export default function SelectAmount({ setAmount }) {
   const [amountInput, setAmountInput] = useState(1);
-  const [lastPlayReport, setLastPlayReport] = useState(true);
+  const [thereIsLastPlayReport, setThereIsLastPlayReport] = useState(false);
   const [amountWasChosen, setAmountWasChosen] = useState(false);
   const [amountIsValidated, setAmountIsValidated] = useState(true);
   const history = useHistory();
@@ -37,13 +37,12 @@ export default function SelectAmount({ setAmount }) {
     amountIsValidated && setAmountWasChosen(true);
   }
 
-  function checkLastPlayReport() {
-    const storageAmount = localStorage.getItem("LAST_PLAY_REPORT");
-    storageAmount && setLastPlayReport(storageAmount);
+  function checkIfThereIsLastPlayReport() {
+    localStorage.hasOwnProperty("LAST_PLAY_REPORT") && setThereIsLastPlayReport(true);
   }
 
   useEffect(() => {
-    checkLastPlayReport();
+    checkIfThereIsLastPlayReport();
   }, [])
 
   return (
@@ -78,7 +77,7 @@ export default function SelectAmount({ setAmount }) {
               <Button onClick={handleSelectAmountClick} variant="contained" /* endIcon={<CheckIcon />} */>select</Button>
             </div>
           </FormControl>
-          {lastPlayReport && <div className='check-report'>To see the report of the last time you played <Link to='/report'>click here</Link></div>}
+          {thereIsLastPlayReport && <div className='check-report'>To see the report of the last time you played <Link to='/report'>click here</Link></div>}
         </div>
       }
     </Container>
