@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useHistory } from 'react-router';
 import { Button, Container, Typography, Box, List, ListItem } from "@material-ui/core";
 import './style.css'
 
@@ -6,6 +7,7 @@ function Report() {
 
   const [lastPlayReport, setLastPlayReport] = useState(false);
   const [correctAnswersNumber, setCorrectAnswersNumber] = useState(0);
+  const history = useHistory();
 
   function getLastPlayReport() {
     const storageLastPlayReport = JSON.parse(localStorage.getItem("LAST_PLAY_REPORT"));
@@ -13,7 +15,7 @@ function Report() {
   }
 
   function handleBackClick() {
-    
+    history.push('/');
   }
 
   useEffect(() => { getLastPlayReport() }, []);
